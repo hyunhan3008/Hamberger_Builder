@@ -33,7 +33,7 @@ class BurgerBuilder extends Component {
         totalPrice: 0,
         purchasable: false,
         purchasing: false,
-        loading: false
+        loading: false,
     }
 
     updatePurchase (ingredients) {
@@ -90,7 +90,7 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         // alert('You Continue!')
-        this.setState=({loading: true});
+        this.setState({ loading: true });
         const order ={
             ingredients: this.state.ingredients,
             price: this.state.totalPrice,
@@ -98,7 +98,7 @@ class BurgerBuilder extends Component {
                 name: 'Hyun Han',
                 address: {
                     street: 'Teststreet 1',
-                    zipcode: '035156',
+                    zipCode: '035156',
                     country: 'Korea'
                 },
                 email: 'test@test.com',
@@ -123,14 +123,13 @@ class BurgerBuilder extends Component {
             disabledInfo[key] = disabledInfo[key] <=0
         }
 
-        let orderSummary =
-            <OrderSumamry
-                ingredients={this.state.ingredients}
-                purchaseCancelled={this.purchaseCancelHandler}
-                price={this.state.totalPrice}
-                purchaseContinued={this.purchaseContinueHandler} />
+        let orderSummary = <OrderSumamry
+            ingredients={this.state.ingredients}
+            purchaseCancelled={this.purchaseCancelHandler}
+            price={this.state.totalPrice}
+            purchaseContinued={this.purchaseContinueHandler} />
         if (this.state.loading) {
-            orderSummary = <Spinner />
+            orderSummary = <Spinner />;
         }
 
         return (
