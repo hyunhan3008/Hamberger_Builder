@@ -10,7 +10,7 @@ const order = (props) => {
         ingredients.push({
             name: ingredientsName,
             amount: props.ingredients[ingredientsName]
-        });
+        }); 
     }
 
     const ingredientsOutput = ingredients.map(ig => {
