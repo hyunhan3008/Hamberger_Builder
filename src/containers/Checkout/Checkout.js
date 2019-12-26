@@ -9,23 +9,25 @@ class Checkout extends Component {
         ingredients: null,
         price: 0
     }
-
-    UNSAFE_componentWillMount () {
-        const query = new URLSearchParams(this.props.location.search);
-        const ingredients = {};
-        let price = 0 
-        for (let param of query.entries()) {
-            //['salad', 1]
+    initState = () => {
+        const queryInit = new URLSearchParams(
+            this.props.location.search
+        );
+        const ingredientsInit = {};
+        let priceInit = 0;
+        for (let param of queryInit.entries()) {
             if (param[0] === 'price') {
-                price = param[1];
+                priceInit = param[1];
             } else {
-                ingredients[param[0]] = +param[1];
+                ingredientsInit[param[0]] = +param[1];
             }
         }
-        this.setState({ingredients: ingredients, totalPrice: price})
-        console.log(this.state.totalPrice);
-
-    }
+        return {
+            ingredients: ingredientsInit,
+            totalPrice: priceInit
+        };
+    };
+    state = this.initState();
 
     checkoutCanclledHandler = () => {
         this.props.history.goBack()
